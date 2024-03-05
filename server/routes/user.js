@@ -5,6 +5,7 @@ const { User } = require("../model/schema"); // get from mongo file {} as it is 
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config");
 const bcrypt = require("bcrypt"); // Import bcrypt for password hashing
+const { Account } = require("../model/schema");
 //
 const { authMiddleware } = require("../middleware/middleware");
 //define the zod auth
@@ -35,6 +36,7 @@ router.post("/signup", async (req, res) => {
     });
   }
   //
+
   //
   //If everything above is clear, then...
   // Hash the password before storing it
