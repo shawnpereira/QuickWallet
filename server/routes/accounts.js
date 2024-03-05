@@ -1,7 +1,7 @@
-// backend/routes/account.js
 const express = require("express");
 const { authMiddleware } = require("../middleware/middleware");
 const { Account } = require("../model/schema");
+const mongoose = require("mongoose");
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.get("/balance", authMiddleware, async (req, res) => {
     balance: account.balance,
   });
 });
-
+//Session should be applied so that the transactions don't fail even if the system crashes. If do it should roll back the transaction
 router.post("/transfer", authMiddleware, async (req, res) => {
   const session = await mongoose.startSession();
 
